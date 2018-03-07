@@ -3,7 +3,8 @@
   <title>tinder</title>
   <link rel="stylesheet" href="mem.css" />
 </head>
-<body>
+<body id="gradient">
+<script src="background.js"></script>
 <script src="id.js"></script>
   <script>
     window.fbAsyncInit = function() {
@@ -12,6 +13,11 @@
         autoLogAppEvents : true,
         xfbml            : true,
         version          : 'v2.12'
+      });
+
+
+      FB.getLoginStatus(function(response) {
+          statusChangeCallback(response);
       });
     };
 
@@ -23,6 +29,14 @@
         //js.src = "https://connect.facebook.net/en_US/sdk.js"; // minified version
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
+
+      function statusChangeCallback(response) {
+        if (response.staus === 'connected') {
+          console.log('Logged in and authed');
+        } else {
+          console.log('Not logged in');
+        }
+      }
   </script>
 
 
