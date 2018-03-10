@@ -11,10 +11,10 @@ function color(red, green, blue) {
   }
 }
 
- function toInt(n){ return Math.round(Number(n)); };
+function toInt(n){ return Math.round(Number(n)); };
 
 
-var color1 = new color(150, 33, 55);
+var color1 = new color(130, 33, 55);
 var color2 = new color(150, 33, 55);
 var body = document.getElementById("gradient")
 var random = document.getElementById("random");
@@ -57,7 +57,7 @@ console.log(color1, color2);
 
 function sinFuncFac() {
   let sinArr = [];
-  for (let i = 0.0; i < 1; i += 0.01) {
+  for (let i = 0.0; i < 1; i += 0.005) {
     sinArr.push((Math.sin(i*2*Math.PI)+1)/2);
   }
   console.log('sin function mapped');
@@ -69,8 +69,8 @@ color1.rStart = 50;
 function smoothColor() {
   sinCount++;
   if (sinCount >= sinFunction.length) { sinCount = 0; }
-  color1.blue = 100 + toInt((sinFunction[sinCount] * 50));
-  color2.green = 50 + toInt((sinFunction[sinCount] * 50));
+  color1.blue = 250 - toInt((sinFunction[sinCount] * 150));
+  color2.green = 50 + toInt((sinFunction[sinCount] * 200));
   // color1.red = color1.red + toInt((sinFunction[sinCount] * 50));
   color1.toString();
   color2.toString();
@@ -80,4 +80,4 @@ function smoothColor() {
   // requestAnimationFrame(smoothColor);
 }
 // smoothColor();
-setInterval(smoothColor, 100);
+setInterval(smoothColor, 50);
