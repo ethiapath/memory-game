@@ -9,7 +9,7 @@
   <script>
     window.fbAsyncInit = function() {
       FB.init({
-        appId            : myAppId,
+        appId            : 1943129949090411,
         autoLogAppEvents : true,
         xfbml            : true,
         version          : 'v2.12'
@@ -25,21 +25,21 @@
         var js, fjs = d.getElementsByTagName(s)[0];
         if (d.getElementById(id)) {return;}
         js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk/debug.js";
-        //js.src = "https://connect.facebook.net/en_US/sdk.js"; // minified version
+        //js.src = "https://connect.facebook.net/en_US/sdk/debug.js";
+        js.src = "https://connect.facebook.net/en_US/sdk.js"; // minified version
         fjs.parentNode.insertBefore(js, fjs);
       }(document, 'script', 'facebook-jssdk'));
 
-      function statusChangeCallback(response) {
-        if (response.staus === 'connected') {
-          console.log('Logged in and authed');
-        } else {
-          console.log('Not logged in');
-        }
+
+    function login() {
+         FB.login(function(response) {
+         // handle the response
+          console.log("Response goes here!");
+          });
       }
+
   </script>
-
-
+  <button onclick="javascript:login();">Login Facebook</button>
 
   <div id="header">
     <H1>Friend quiz</h1>
@@ -48,7 +48,7 @@
   <div id="content">
     <div id="friend" class="friend">
       <div class="img-frame">
-        <img id="firend-pic" src="placeholder.jpg" width="300px" height="300px">
+        <img id="firend-pic" src="friends.jpg" width="300px" height="300px">
       </div>
       <h3 id="friend-name">???</h3>
     </div>
