@@ -28,9 +28,20 @@
          FB.login(function(response) {
          // handle the response
           console.log("Response goes here!");
-          });
+        }, {scope: 'user_friends'});
       }
-
+      //-----------------DISPLAY FRIEND NAMES
+      FB.api(
+        '/me/friends',
+        'GET',
+        {fields: 'name,id,location,birthday'},
+        function(response) {
+          for (name in friends) {
+            output += friends + ': ' + name +'; ';
+          }
+          result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + output;
+        }
+      );
   </script>
   <button onclick="javascript:login();">Login Facebook</button>
 
