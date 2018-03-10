@@ -20,13 +20,13 @@ var body = document.getElementById("gradient")
 var random = document.getElementById("random");
 
 function setGradient() {
-  body.style.background = 
-  "linear-gradient(to right, " 
+  body.style.background =
+  "linear-gradient(to right, "
   + color1.value
   + ","
   + color2.value
   + ")";
-  
+
 }
 window.onload = setGradient;
 
@@ -74,7 +74,7 @@ function smoothColor() {
   // color1.red = color1.red + toInt((sinFunction[sinCount] * 50));
   color1.toString();
   color2.toString();
-  // console.log(sinCount, 'color1:', color1.red, color1.green, color1.blue, 'color2:',  color2.red, color2.green, color2.blue); 
+  // console.log(sinCount, 'color1:', color1.red, color1.green, color1.blue, 'color2:',  color2.red, color2.green, color2.blue);
   setGradient();
   // console.log(sinCount);
   // requestAnimationFrame(smoothColor);

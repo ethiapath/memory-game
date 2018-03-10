@@ -5,7 +5,6 @@
 </head>
 <body id="gradient">
 <script src="background.js"></script>
-<script src="id.js"></script>
   <script>
     window.fbAsyncInit = function() {
       FB.init({
@@ -35,23 +34,22 @@
          FB.login(function(response) {
          // handle the response
           console.log("Response goes here!");
-          }, {scope: 'user_friends'});
-
-                //-----------------DISPLAY FRIEND NAMES
-;
+        }, {scope: 'user_friends'});
+      }
+      //-----------------DISPLAY FRIEND NAMES'
+    function listFriends(){
       FB.api(
         '/me',
         'GET',
-        {"fields":"id,name,email,friends"},
-        function(response) {
-            // Insert your code here
+            {"fields":"id,name,email,friends"},
+            function(response) {
             console.log(response);
-        }
-      );
+            }
+          );
       }
-
   </script>
   <button onclick="javascript:login();">Login Facebook</button>
+  <button onclick="javascript:listFriends();">List Facebook Friends</button>
 
   <div id="header">
     <H1>Friend quiz</h1>
