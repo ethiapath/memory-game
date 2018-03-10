@@ -38,15 +38,14 @@
           }, {scope: 'user_friends'});
 
                 //-----------------DISPLAY FRIEND NAMES
+;
       FB.api(
-        '/me/friends',
+        '/me',
         'GET',
-        {fields: 'name,id,location,birthday'},
+        {"fields":"id,name,email,friends"},
         function(response) {
-          for (name in friends) {
-            output += friends + ': ' + name +'; ';
-          }
-          result_holder.innerHTML = '<h2>Result list of your friends:</h2>' + output;
+            // Insert your code here
+            console.log(response);
         }
       );
       }
