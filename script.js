@@ -6,6 +6,7 @@ const appendArrToTarget = (arr, target) => {
   for (let i = 0; i < end; i++) {
     let mesg = arr[i];
     let li = document.createElement('li');
+    li.className = 'name';
     li.appendChild(document.createTextNode(mesg))
     target.appendChild(li);
   }

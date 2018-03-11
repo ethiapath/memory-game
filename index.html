@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="mem.css" />
 </head>
 <body id="gradient">
+<script src="script.js"></script>
 <script src="background.js"></script>
 <script>
   window.fbAsyncInit = function() {
@@ -51,9 +52,16 @@
       {"fields":"id,name,email,friends"},
       function(response) {
         console.log('list friends', response);
-        }
-      );
-    }
+        // this is how it would work
+        let output = [];
+        response.friends.data.forEach(element => {
+          output.push(element.name);
+        });
+        if (output.length === 0) { output = ['joe shmoe', 'thing2']; }
+        appendArrToTarget(output, document.getElementById('list'));
+      }
+    );
+  }
   </script>
   <div class="nav">
     <button id="login-button" onclick="javascript:login();">Login Facebook</button>
@@ -73,6 +81,4 @@
     </div>
     <ul id="list"></ul>
   </div>
-
-  <script src="script.js"></script>
 </body>
