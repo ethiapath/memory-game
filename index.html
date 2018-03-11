@@ -41,15 +41,15 @@
       FB.api(
         '/me',
         'GET',
-            {"fields":"id,name,email,friends"},
-            function(response) {
-            console.log(response);
-            }
-          );
+        {"fields":"id,name,email,friends"},
+        function(response) {
+          console.log(response);
+          }
+        );
       }
   </script>
-  <button onclick="javascript:login();">Login Facebook</button>
-  <button onclick="javascript:listFriends();">List Facebook Friends</button>
+  <button id="login-button" onclick="javascript:login();">Login Facebook</button>
+  <button id="friend-button" onclick="javascript:listFriends();">List Facebook Friends</button>
 
   <div id="header">
     <H1>Friend quiz</h1>
