@@ -5,51 +5,60 @@
 </head>
 <body id="gradient">
 <script src="background.js"></script>
-  <script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId            : 1943129949090411,
-        autoLogAppEvents : true,
-        xfbml            : true,
-        version          : 'v2.12'
-      });
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId            : 196658291067094,
+      autoLogAppEvents : true,
+      xfbml            : true,
+      version          : 'v2.12'
+    });
+
+    FB.AppEvents.logPageView();
+
+    FB.getLoginStatus(function(response) {
+        statusChangeCallback(response);
+        if (response.status === 'connected') {
+          console.log('Logged in');
+        } else {
+          console.log('ERROR: not logged in');
+        }
+    });
+  };
+
+  (function(d, s, id){
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) {return;}
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk/debug.js";
+      // js.src = "https://connect.facebook.net/en_US/sdk.js"; // minified version
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
 
 
-      FB.getLoginStatus(function(response) {
-          statusChangeCallback(response);
-      });
-    };
-
-    (function(d, s, id){
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
-        js = d.createElement(s); js.id = id;
-        //js.src = "https://connect.facebook.net/en_US/sdk/debug.js";
-        js.src = "https://connect.facebook.net/en_US/sdk.js"; // minified version
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-
-
-    function login() {
-         FB.login(function(response) {
-         // handle the response
-          console.log("Response goes here!");
-        }, {scope: 'user_friends'});
-      }
-      //-----------------DISPLAY FRIEND NAMES'
-    function listFriends(){
-      FB.api(
-        '/me',
-        'GET',
-        {"fields":"id,name,email,friends"},
-        function(response) {
-          console.log(response);
-          }
-        );
-      }
+  function login() {
+        FB.login(function(response) {
+        // handle the response
+        let userAccessToken = response.authResponse.accessToken;
+        console.log('login response:', response, '\n', response.authResponse.accessToken);
+      }, {scope: 'user_friends'});
+    }
+    //-----------------DISPLAY FRIEND NAMES'
+  function listFriends(){
+    FB.api(
+      '/me',
+      'GET',
+      {"fields":"id,name,email,friends"},
+      function(response) {
+        console.log('list friends', response);
+        }
+      );
+    }
   </script>
-  <button id="login-button" onclick="javascript:login();">Login Facebook</button>
-  <button id="friend-button" onclick="javascript:listFriends();">List Facebook Friends</button>
+  <div class="nav">
+    <button id="login-button" onclick="javascript:login();">Login Facebook</button>
+    <button id="friend-button" onclick="javascript:listFriends();">List Facebook Friends</button>
+  </div>
 
   <div id="header">
     <H1>Friend quiz</h1>

@@ -5,14 +5,15 @@ function color(red, green, blue) {
   this.blue = blue;
   var self = this;
   this.toString = function() {
+    // round floating point values to ints
     self.red = toInt(self.red); self.green = toInt(self.green); self.blue = toInt(self.blue);
+    // truncates ints to byte values in order to be converted to hex
     self.red %= 255; self.green %= 255; self.blue %= 255;
     self.value = '#' + self.red.toString(16) + self.green.toString(16) + self.blue.toString(16);
   }
 }
 
 function toInt(n){ return Math.round(Number(n)); };
-
 
 var color1 = new color(130, 33, 55);
 var color2 = new color(150, 33, 55);
@@ -50,17 +51,11 @@ function getRandomHex() {
   return  Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function incrementColor(obj, color) {
-  obj[color]++;
-}
-console.log(color1, color2);
-
 function sinFuncFac() {
   let sinArr = [];
   for (let i = 0.0; i < 1; i += 0.005) {
     sinArr.push((Math.sin(i*2*Math.PI)+1)/2);
   }
-  console.log('sin function mapped');
   return sinArr;
 }
 sinFunction = sinFuncFac();
